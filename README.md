@@ -1,5 +1,5 @@
 # TheWeatherServer
-HTML and Javascript examples on how to access data from <a href/"http://theweatherserver.com">TheWeatherServer</a>.
+HTML and Javascript examples on how to access data from <a href="http://theweatherserver.com">TheWeatherServer</a>.
 
  
       var createTileUrl = function(tileCoord, pixelRatio, projection) {
