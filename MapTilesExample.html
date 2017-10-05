@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+ 	<head>      
+    	<link rel="stylesheet" href="https://openlayers.org/en/v4.1.0/css/ol.css" type="text/css">
+    	<script src="https://openlayers.org/en/v4.1.0/build/ol.js"></script>
+    
+    	<title>The Weather Server - Map Tile Example</title>
+  	</head>
+
+  	<body>
+
+
+    <div>
+      <small>The Weather Server - Map Tile Example</small><br>
+      <div style="font-size: 200%">Current Temperature</div>
+      This example shows how to add weather tiles from TheWeatherServer as of a map using the Openlayers framework. Every time you zoom or move the map, the appropriate weather tiles are loaded from TheWeatherServer.
+    </div>
+
+    <div id="map" class="map">
+  
+    <script type="text/javascript">
+  
+ /*     
+      var createTileUrl = function(tileCoord, pixelRatio, projection) {
+        var urlTemplate = 'http://theweatherserver.appspot.com//weatherserver_getTile?x={x}&y={y}&z={z}&dt={datatype}&pt={plottype}&at={areatype}&fi={forecastinterval}';
+        return urlTemplate
+          .replace('{z}', tileCoord[0].toString())
+          .replace('{x}', tileCoord[1].toString())
+          .replace('{y}', (-tileCoord[2] - 1).toString())
+          .replace('{datatype}', datatype)
+          .replace('{plottype}', plottype)
+          .replace('{areatype}', areatype)
+          .replace('{forecastinterval}', forecastinterval_min);
+      }
+*/
+
+    var tileUrl = 'http://theweatherserver.com/weatherserver_getTile?x={x}&y={y}&z={z}&dt=3&pt=6&at=2&fi=00';
+
+
+    var weatherlayer = new ol.layer.Tile({
+       visible: true,
+       source: new ol.source.XYZ({
+         url: tileUrl
+       })
+     });
+
+
+    var map = new ol.Map({
+        target: 'map',
+        layers: [
+ 
+            new ol.layer.Tile({
+                visible: true,
+                preload: Infinity,
+                source: new ol.source.XYZ({
+                  url: 'https://{1-4}.aerial.maps.cit.api.here.com' + 
+                      '/maptile/2.1/maptile/newest/terrain.day/{z}/{x}/{y}/256/png' +
+                    '?app_id=yRwz75uLRJ7kiZ9iOmkq&app_code=4emU0lUN1TwN_bRGmzNgqg'
+                })
+            }),
+        
+            new ol.layer.Tile({
+                visible: true,
+                source: new ol.source.XYZ({
+                  url: 'http://t1.openseamap.org/seamark/{z}/{x}/{y}.png'
+                })
+            }),
+
+            weatherlayer
+        ],
+                    
+        loadTilesWhileAnimating: true,
+        view: new ol.View({
+            center: ol.proj.fromLonLat([11.58, 48.14]),
+            zoom: 5
+          })
+      });
+  
+    </script>
+        
+  </body>
+</html>
