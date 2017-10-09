@@ -6,7 +6,7 @@ This repository contains examples that show how you can use the API of TheWeathe
 A Custom `tileURLFunction` for OpenLayers
 ----------------------------------------
 
-In the MapTilesExample.html, the tile URL, which is passed to the OpenLayers framework to retrieve the weather tiles, has only parameters `x`, `y` and `z` as variables, which is the standard for OpenLayers. With a little more effort, you can obtain a solution that allows to dynamically set all parameters of the map tiles API, such that you can easily change the data type, the illustration and the forecast time, for example.
+In the MapTilesExample.html, the tile URL, which is passed to the OpenLayers framework to retrieve the weather tiles, has only parameters `x`, `y` and `z` as variables, which is the standard for OpenLayers. With a little more effort, we can obtain a solution that allows to dynamically set all parameters of the map tiles API, such that you can easily change the data type, the illustration and the forecast time, for example.
 
 For this purpose, we first need to define a function that creates the tile URL from the parameters for data type, plot type, area type and forecast interval:
 
@@ -26,7 +26,7 @@ For this purpose, we first need to define a function that creates the tile URL f
 
 Note that array `tileCoord` comes from the OpenLayers framework and should not be changed. Variables `datatype`, `plottype`, `areatype` and `forecastinterval`, however, do contain the settings specific to theWeatherServer.com.
 
-Now, we need to make sure that above function is used instead of the fixed tile URL, as it was defined in the MapTilesExample.html. We can do this by using a pointer to the function in the definition of the layer that contains the weather tiles:
+Now, we need to make sure that above function `createTileUrl` is used instead of the fixed tile URL, as it was defined in the MapTilesExample.html. We can do this by using a pointer to the function in the definition of the layer that contains the weather tiles:
 
 ```
     var weatherlayer = new ol.layer.Tile({
