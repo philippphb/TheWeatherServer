@@ -37,4 +37,4 @@ Now, we need to make sure that above function `createTileUrl` is used instead of
     });
 ```
 
-The remaining steps are similar to the example from MapTilesExamples.html
+The remaining steps are similar to the example from MapTilesExamples.html.
