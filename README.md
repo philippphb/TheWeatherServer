@@ -12,7 +12,7 @@ For this purpose, we first need to define a function that creates the tile URL f
 
 ```
     var createTileUrl = function(tileCoord, pixelRatio, projection) {
-        var urlTemplate = 'http://theweatherserver.appspot.com//weatherserver_getTile?x={x}&y={y}&z={z}&dt={datatype}&pt={plottype}&at={areatype}&fi={forecastinterval}';
+        var urlTemplate = 'http://theweatherserver.com//weatherserver_getTile?x={x}&y={y}&z={z}&dt={datatype}&pt={plottype}&at={areatype}&fi={forecastinterval}';
         return urlTemplate
             .replace('{z}', tileCoord[0].toString())
             .replace('{x}', tileCoord[1].toString())
